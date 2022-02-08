@@ -4,6 +4,8 @@ import "antd/dist/antd.css";
 import { SidesForm } from "./components/SidesForm";
 import { Draw } from "./components/Draw";
 
+
+//validate triangle shapes and inputs
 function triangle(a, b, c) {
   const isValid = a + b > c && a + c > b && b + c > a;
   if (!isValid) {

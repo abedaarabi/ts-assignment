@@ -1,5 +1,6 @@
 import React from "react";
 
+//calculate triangle points
 const calculateTriangle = (a, b, c) => {
   const ax = 10;
   const ay = 10;
