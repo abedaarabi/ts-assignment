@@ -1,14 +1,13 @@
 import React from "react";
 
-//calculate triangle points
 const calculateTriangle = (a, b, c) => {
-  const ax = 0;
-  const ay = 0;
+  const ax = 100;
+  const ay = 50;
   const bx = ax + c;
   const by = ay;
   const cosAlpha = (a * a - b * b - c * c) / (b * c * 2);
   const alpha = Math.acos(cosAlpha);
-  const cx = ax + b * cosAlpha;
+  const cx = ax - b * cosAlpha;
   const cy = ay + b * Math.sin(alpha);
   return { ax, ay, bx, by, cx, cy };
 };
