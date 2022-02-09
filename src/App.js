@@ -4,7 +4,9 @@ import "antd/dist/antd.css";
 import { SidesForm } from "./components/SidesForm";
 import { Draw } from "./components/Draw";
 
-
+const EQUILATERAL = "Equilateral";
+const ISOSCELES = "Isosceles";
+const SCALENE = "Scalene";
 //validate triangle shapes and inputs
 function triangle(a, b, c) {
   const isValid = a + b > c && a + c > b && b + c > a;
@@ -12,10 +14,10 @@ function triangle(a, b, c) {
     return "invalid";
   }
 
-  if (a === b && a === c && b === c) return "Equilateral";
-  if (a === b || a === c || c === b) return "Isosceles";
+  if (a === b && a === c && b === c) return EQUILATERAL;
+  if (a === b || a === c || c === b) return ISOSCELES;
   else {
-    return "Scalene";
+    return SCALENE;
   }
 }
 
