@@ -3,11 +3,13 @@ import "./App.css";
 import "antd/dist/antd.css";
 import { SidesForm } from "./components/SidesForm";
 import { Draw } from "./components/Draw";
+import { message } from "antd";
 
 export const EQUILATERAL = "Equilateral";
 export const ISOSCELES = "Isosceles";
 export const SCALENE = "Scalene";
 export const INVALID = "Invalid";
+
 //validate triangle shapes and inputs
 function triangle(a, b, c) {
   const isValid = a + b > c && a + c > b && b + c > a;
@@ -28,10 +30,19 @@ function App() {
   });
 
   function sidesValues(value) {
-    const triangleType = triangle(value.a, value.b, value.c);
+    const { a, b, c } = value;
 
-    if (triangleType === "invalid") {
-      alert("invalid inputs");
+    const triangleType = triangle(a, b, c);
+
+    if (triangleType === INVALID) {
+      message.error({
+        content: `${INVALID} Inputs`,
+        className: "custom-class",
+        duration: 0.5,
+        style: {
+          marginTop: "10vh",
+        },
+      });
     } else {
       setTriangleValues({ sides: value, type: triangleType });
     }
