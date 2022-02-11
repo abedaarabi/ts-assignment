@@ -8,7 +8,7 @@ import { message } from "antd";
 export const EQUILATERAL = "Equilateral";
 export const ISOSCELES = "Isosceles";
 export const SCALENE = "Scalene";
-export const INVALID = "Invalid";
+export const INVALID = "Invalid Inputs";
 
 //validate triangle shapes and inputs
 function triangle(a, b, c) {
@@ -35,12 +35,13 @@ function App() {
     const triangleType = triangle(a, b, c);
 
     if (triangleType === INVALID) {
+      setTriangleValues({ sides: value, type: triangleType });
       message.error({
         content: `${INVALID} Inputs`,
         className: "custom-class",
         duration: 0.5,
         style: {
-          marginTop: "10vh",
+          marginTop: "50vh",
         },
       });
     } else {
@@ -51,7 +52,7 @@ function App() {
   return (
     <div className="App">
       <SidesForm onSubmit={sidesValues} />
-      {triangleValues.sides && (
+      {triangleValues.type && triangleValues.type && (
         <Draw
           triangleValues={triangleValues.sides}
           triangleType={triangleValues.type}

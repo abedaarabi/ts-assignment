@@ -1,4 +1,5 @@
 import React from "react";
+import { INVALID } from "../App";
 
 const calculateTriangle = (a, b, c) => {
   const ax = 100;
@@ -23,20 +24,22 @@ export function Draw({ triangleValues, triangleType }) {
         {/* {JSON.stringify({ a, b, c })}  */}
         <p data-testid="triangle-type">{triangleType}</p>
       </div>
-      <div>
-        <svg className="traingle" height="400" width="400">
-          <polygon
-            className="polygon"
-            style={{
-              strokeWidth: 3,
-              stroke: "white",
-              fill: "none",
-            }}
-            points={`${ax},${ay} ${bx},${by} ${cx},${cy}`}
-            // points="250,60 100,400 400,400"
-          />
-        </svg>
-      </div>
+      {triangleType !== INVALID ? (
+        <div>
+          <svg className="traingle" height="400" width="400">
+            <polygon
+              className="polygon"
+              style={{
+                strokeWidth: 3,
+                stroke: "white",
+                fill: "none",
+              }}
+              points={`${ax},${ay} ${bx},${by} ${cx},${cy}`}
+              // points="250,60 100,400 400,400"
+            />
+          </svg>
+        </div>
+      ) : null}
     </div>
   );
 }
